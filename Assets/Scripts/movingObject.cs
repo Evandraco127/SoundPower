@@ -22,7 +22,16 @@ public class movingObject : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        objectToMove.transform.position = Vector3.MoveTowards(objectToMove.transform.position, currentTarget, moveSpeed * Time.deltaTime)
+        objectToMove.transform.position = Vector3.MoveTowards(objectToMove.transform.position, currentTarget, moveSpeed * Time.deltaTime);
 		
-	}
+        if (objectToMove.transform.position == downPosition.position)
+        {
+            currentTarget = upPosition.position;
+        }
+
+        if (objectToMove.transform.position == upPosition.position)
+        {
+            currentTarget = downPosition.position;
+        }
+    }
 }
