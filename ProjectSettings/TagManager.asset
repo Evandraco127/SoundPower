@@ -11,6 +11,7 @@ TagManager:
   - killPlane
   - DJ
   - checkPoint
+  - MovingPlatform
   layers:
   - Default
   - TransparentFX
