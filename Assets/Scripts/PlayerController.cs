@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour {
             myRigidbody.velocity = new Vector3(0f, myRigidbody.velocity.y, 0f);
 
         }
-        if (Input.GetButtonDown("Jump") && isGrounded) {
+        if (Input.GetButtonDown("Jump") /*&& isGrounded*/) {
 
             myRigidbody.velocity = new Vector3(myRigidbody.velocity.x, jumpSpeed, 0f);
 
@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour {
 
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "killPlane") {
             //transform.position = respawnPosition;
@@ -86,7 +86,22 @@ public class PlayerController : MonoBehaviour {
             }
 
 
-        if (collision.tag == "checkPoint") respawnPosition = collision.transform.position;
+        if (collision.tag == "checkPoint") { respawnPosition = collision.transform.position; }
+
+      
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "MovingPlatform") {transform.parent = collision.transform; }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "MovingPlatform") { transform.parent = null;}
+
+
+
     }
 
 }

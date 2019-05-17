@@ -1,5 +1,6 @@
 ﻿<Properties StartupConfiguration="{3969AD1D-335C-D024-35DE-5EA9FCAE52CF}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/movingObject.cs">
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/checkPointController.cs">
     <Files>
       <File FileName="Assets/Scripts/PlayerController.cs" Line="80" Column="30" />
       <File FileName="Assets/Scripts/checkPointController.cs" Line="17" Column="3" />
@@ -10,11 +11,10 @@
       <File FileName="Assets/Scripts/movingObject.cs" Line="25" Column="138" />
     </Files>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
 </Properties>
