@@ -1,17 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour {
 
     public float waitToRespawn;
     public PlayerController thePlayer;
-    public GameObject releaseOfSpirit; 
+    public GameObject releaseOfSpirit;
+    public int coinCount;
 
+    public Text coinText;
 
-
-
-    void Start () { thePlayer = FindObjectOfType<PlayerController>();}
+    void Start () { thePlayer = FindObjectOfType<PlayerController>();
+    }
 	
 	void Update () {  }
 
@@ -30,6 +32,15 @@ public class LevelManager : MonoBehaviour {
 
         thePlayer.transform.position = thePlayer.respawnPosition;
         thePlayer.gameObject.SetActive(true);
+    }
+
+    public void AddCoins(int coinsToAdd)
+    {
+        coinCount += coinsToAdd;
+        coinText.text = "Coins: " + coinCount;
+
+
+
     }
 
 }

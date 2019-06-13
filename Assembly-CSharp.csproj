@@ -115,6 +115,7 @@
     <Compile Include="Assets\scr.cs" />
     <Compile Include="Assets\Scripts\cameraController.cs" />
     <Compile Include="Assets\Scripts\checkPointController.cs" />
+    <Compile Include="Assets\Scripts\Coin.cs" />
     <Compile Include="Assets\Scripts\destroyOverTime.cs" />
     <Compile Include="Assets\Scripts\enemies\sheepWController.cs" />
     <Compile Include="Assets\Scripts\enemies\slime.cs" />
