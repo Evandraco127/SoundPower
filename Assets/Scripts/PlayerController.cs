@@ -8,14 +8,14 @@ public class PlayerController : MonoBehaviour {
     public float moveSpeed;
     private Rigidbody2D myRigidbody;
     public float jumpSpeed;
+
+    // Check if on ground and can double jump
     public Transform groundCheck;
     public float groundCheckRadius;
     public LayerMask whatIsGround;
-
-
     public bool isGrounded;
     protected bool canDoubleJump; 
-
+    //
     private Animator myAnim;
 
     public Vector3 respawnPosition;

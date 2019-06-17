@@ -5,6 +5,7 @@ using UnityEngine;
 public class HurtPlayer : MonoBehaviour {
 
     private LevelManager theLevelManager;
+    public int damageToGive;
 
 	// Use this for initialization
 	void Start () {
@@ -22,7 +23,9 @@ public class HurtPlayer : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "DJ") { theLevelManager.Respawn(); }
+        if (collision.tag == "DJ") { /*theLevelManager.Respawn();*/
+
+            theLevelManager.hurtPlayer(damageToGive); }
     }
 
 
