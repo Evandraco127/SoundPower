@@ -117,6 +117,7 @@
     <Compile Include="Assets\Scripts\checkPointController.cs" />
     <Compile Include="Assets\Scripts\Coin.cs" />
     <Compile Include="Assets\Scripts\destroyOverTime.cs" />
+    <Compile Include="Assets\Scripts\enemies\BLKBear.cs" />
     <Compile Include="Assets\Scripts\enemies\sheepWController.cs" />
     <Compile Include="Assets\Scripts\enemies\slime.cs" />
     <Compile Include="Assets\Scripts\enemies\spiderController.cs" />
@@ -125,6 +126,7 @@
     <Compile Include="Assets\Scripts\movingObject.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\projectilleA.cs" />
+    <Compile Include="Assets\Scripts\ResetOnReSpwan.cs" />
     <Compile Include="Assets\Scripts\Weapon.cs" />
     <None Include="Assets\Cinemachine\ReleaseNotes.txt" />
     <Reference Include="UnityEditor.StandardEvents">

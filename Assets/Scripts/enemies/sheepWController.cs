@@ -24,17 +24,8 @@ public class sheepWController : MonoBehaviour
     void Update()
     {
 
-        if (movingRight && transform.position.x > rightPoint.position.x)
-        {
-            movingRight = false;
-
-        }
-        if (!movingRight && transform.position.x < leftPoint.position.x)
-        {
-            movingRight = true;
-            
-
-        }
+        if (movingRight && transform.position.x > rightPoint.position.x){ movingRight = false;}
+        if (!movingRight && transform.position.x < leftPoint.position.x) {movingRight = true;}
 
         if (movingRight)
         {
@@ -58,8 +49,8 @@ public class sheepWController : MonoBehaviour
 
         if (collision.gameObject.tag == "jjSP")
         {
-
-            Destroy(gameObject);
+            gameObject.SetActive(false);
+            //Destroy(gameObject);
         }
 
 

@@ -28,7 +28,8 @@ public class Coin : MonoBehaviour {
         if(other.tag == "DJ") 
         {
             theLevelManger.AddCoins(coinValue);
-            Destroy(gameObject); 
+            gameObject.SetActive(false);
+            //Destroy(gameObject); 
         }
     }
 }

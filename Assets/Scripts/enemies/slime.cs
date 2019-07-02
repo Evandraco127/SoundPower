@@ -5,7 +5,8 @@ using UnityEngine;
 public class slime : MonoBehaviour
 {
 
-    // Use this for initialization
+    public GameObject releaseOfSpirit;
+
     public float moveSpeed;
     public Transform leftPoint;
     public Transform rightPoint;
@@ -54,11 +55,14 @@ public class slime : MonoBehaviour
         {
             Debug.Log(collision.gameObject.tag);
 
-            if (collision.gameObject.tag == "shSP") { 
-          
-              Destroy(gameObject); }
+            if (collision.gameObject.tag == "shSP") {
 
+            // Destroy(gameObject);
+            gameObject.SetActive(false);
+            Instantiate(releaseOfSpirit, collision.transform.position, collision.transform.rotation);
         }
+
+    }
 
 }
 

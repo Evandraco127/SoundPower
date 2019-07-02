@@ -25,8 +25,14 @@ public class LevelManager : MonoBehaviour {
 
     private bool respawning;
 
+    public ResetOnReSpwan[] objectsToReset;
+
+
     void Start () { thePlayer = FindObjectOfType<PlayerController>();
-    }
+
+        objectsToReset = FindObjectsOfType<ResetOnReSpwan>();
+
+          }
 	
 	void Update () {
         if (healthCount <= 0 && !respawning)
@@ -40,7 +46,7 @@ public class LevelManager : MonoBehaviour {
 
      public IEnumerator RespawnCo() {
 
-        Debug.Log("running co");
+     //  Debug.Log("running co");
 
        thePlayer.gameObject.SetActive(false);
 
@@ -52,9 +58,19 @@ public class LevelManager : MonoBehaviour {
             healthCount = maxHealth;
             respawning = false;
              UpdateHeartMeter();
+            coinCount = 0;
+            coinText.text = "Coins: " + coinCount;
+
 
         thePlayer.transform.position = thePlayer.respawnPosition;
         thePlayer.gameObject.SetActive(true);
+
+        for (int i = 0; i < objectsToReset.Length; i++) {
+
+            objectsToReset[i].gameObject.SetActive(true);
+            objectsToReset[i].ResetOject();
+        }
+
     }
 
     public void AddCoins(int coinsToAdd)

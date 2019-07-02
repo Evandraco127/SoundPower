@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class spiderController : MonoBehaviour {
 
-    // Use this for initialization
+    public GameObject releaseOfSpirit;
+
     public float moveSpeed;
     public Transform leftPoint;
     public Transform rightPoint;
@@ -47,13 +48,14 @@ public class spiderController : MonoBehaviour {
         Debug.Log(collision.gameObject.tag);
 
         if (collision.gameObject.tag == "jjSP") {
-          
-        Destroy(gameObject); }
 
+            gameObject.SetActive(false);
+           /* Destroy(gameObject);*/
+            Instantiate(releaseOfSpirit, collision.transform.position, collision.transform.rotation);
 
+        }
 
     }
-
 
 }
 
