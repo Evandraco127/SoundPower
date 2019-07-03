@@ -14,67 +14,105 @@ public class PlayerController : MonoBehaviour {
     public float groundCheckRadius;
     public LayerMask whatIsGround;
     public bool isGrounded;
-    protected bool canDoubleJump; 
+    protected bool canDoubleJump;
     //
     private Animator myAnim;
 
     public Vector3 respawnPosition;
 
     public LevelManager theLevelManager;
+    public Weapon Weapons;
+
+    public float knockBackForce;
+    public float knockBackLength;
+    private float knockBackCounter;
+    public float invincibilityLength;
+    private float invinvincibilityCounter; 
 
 
-
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start() {
         myRigidbody = GetComponent<Rigidbody2D>();
         myAnim = GetComponent<Animator>();
 
         respawnPosition = transform.position;
+
         theLevelManager = FindObjectOfType<LevelManager>();
+        Weapons = FindObjectOfType<Weapon>();
 
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update() {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
-
-
-        if(Input.GetAxisRaw ("Horizontal") > 0f ) {
-
-            myRigidbody.velocity = new Vector3(moveSpeed, myRigidbody.velocity.y, 0f);
-            //transform.localScale = new Vector3(1f,1f,1f);
-            transform.localRotation = Quaternion.Euler(0, 0, 0);
-
-        } else if (Input.GetAxisRaw("Horizontal") < 0f)
+        if (knockBackCounter <= 0)
         {
 
-            myRigidbody.velocity = new Vector3(-moveSpeed, myRigidbody.velocity.y, 0f);
-            // transform.localScale = new Vector3(-1f, 1f, 1f);
-            transform.localRotation = Quaternion.Euler(0, 180, 0);
+            if (Input.GetAxisRaw("Horizontal") > 0f)
+            {
 
-        }
-        else {
+                myRigidbody.velocity = new Vector3(moveSpeed, myRigidbody.velocity.y, 0f);
+                //transform.localScale = new Vector3(1f,1f,1f);
+                transform.localRotation = Quaternion.Euler(0, 0, 0);
 
-            myRigidbody.velocity = new Vector3(0f, myRigidbody.velocity.y, 0f);
+            }
+            else if (Input.GetAxisRaw("Horizontal") < 0f)
+            {
 
-        }
-        if (Input.GetButtonDown("Jump") && isGrounded) {
+                myRigidbody.velocity = new Vector3(-moveSpeed, myRigidbody.velocity.y, 0f);
+                // transform.localScale = new Vector3(-1f, 1f, 1f);
+                transform.localRotation = Quaternion.Euler(0, 180, 0);
 
-            myRigidbody.velocity = new Vector3(myRigidbody.velocity.x, jumpSpeed, 0f);
+            }
+            else
+            {
+                myRigidbody.velocity = new Vector3(0f, myRigidbody.velocity.y, 0f);
 
-            canDoubleJump = true;
+            }
+            if (Input.GetButtonDown("Jump") && isGrounded)
+            {
+
+                myRigidbody.velocity = new Vector3(myRigidbody.velocity.x, jumpSpeed, 0f);
+
+                canDoubleJump = true;
 
 
-        } else if(Input.GetButtonDown("Jump") && canDoubleJump)
+            }
+            else if (Input.GetButtonDown("Jump") && canDoubleJump)
             {
 
                 myRigidbody.velocity = new Vector3(myRigidbody.velocity.x, jumpSpeed, 0f);
                 canDoubleJump = false;
+            }
         }
+       // if(invinvincibilityCounter > 0) { invinvincibilityCounter -= Time.deltaTime;  }
+        if (knockBackCounter > 0)
+        {
+            knockBackCounter -= Time.deltaTime;
+            if ( transform.localRotation.eulerAngles.y < 180)
+            {
+                myRigidbody.velocity = new Vector3(-knockBackForce, knockBackForce, 0f);
+            } else
+            {
+                myRigidbody.velocity = new Vector3(knockBackForce, knockBackForce, 0f);
+            }
+        }
+        if (invinvincibilityCounter > 0) { invinvincibilityCounter -= Time.deltaTime; }
+        if (invinvincibilityCounter <= 0) { theLevelManager.invicible = false; }
 
-                myAnim.SetFloat("Speed", Mathf.Abs(myRigidbody.velocity.x));
-                myAnim.SetBool("Grounded", isGrounded);
+        myAnim.SetFloat("Speed", Mathf.Abs(myRigidbody.velocity.x));
+        myAnim.SetBool("Grounded", isGrounded);
 
+    }
+
+ 
+    public void knockBack() {
+        knockBackCounter = knockBackLength;
+        invinvincibilityCounter = invincibilityLength;
+        theLevelManager.invicible = true;
+
+
+    
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

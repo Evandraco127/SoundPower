@@ -26,6 +26,7 @@ public class LevelManager : MonoBehaviour {
     private bool respawning;
 
     public ResetOnReSpwan[] objectsToReset;
+    public bool invicible; 
 
 
     void Start () { thePlayer = FindObjectOfType<PlayerController>();
@@ -55,6 +56,7 @@ public class LevelManager : MonoBehaviour {
 
          yield return new WaitForSeconds(waitToRespawn);
 
+        thePlayer.knockBackForce = 0;
             healthCount = maxHealth;
             respawning = false;
              UpdateHeartMeter();
@@ -62,8 +64,11 @@ public class LevelManager : MonoBehaviour {
             coinText.text = "Coins: " + coinCount;
 
 
+
+       
         thePlayer.transform.position = thePlayer.respawnPosition;
         thePlayer.gameObject.SetActive(true);
+
 
         for (int i = 0; i < objectsToReset.Length; i++) {
 
@@ -80,8 +85,13 @@ public class LevelManager : MonoBehaviour {
 
     public void hurtPlayer(int damageToTake) {
 
-        healthCount -= damageToTake;
-        UpdateHeartMeter();
+        if (!invicible)
+        {
+
+            healthCount -= damageToTake;
+            UpdateHeartMeter();
+            thePlayer.knockBack();
+        }
     }
 
     public void UpdateHeartMeter()
