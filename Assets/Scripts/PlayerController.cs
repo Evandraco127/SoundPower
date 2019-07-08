@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
 
@@ -21,13 +22,15 @@ public class PlayerController : MonoBehaviour {
     public Vector3 respawnPosition;
 
     public LevelManager theLevelManager;
-    public Weapon Weapons;
+   // public Weapon Weapons;
+    public shortVWeapon shortVWeapons;
 
     public float knockBackForce;
     public float knockBackLength;
     private float knockBackCounter;
     public float invincibilityLength;
     private float invinvincibilityCounter; 
+   
 
 
     // Use this for initialization
@@ -38,7 +41,25 @@ public class PlayerController : MonoBehaviour {
         respawnPosition = transform.position;
 
         theLevelManager = FindObjectOfType<LevelManager>();
-        Weapons = FindObjectOfType<Weapon>();
+
+
+        Scene currentScene = SceneManager.GetActiveScene();
+
+        // Retrieve the name of this scene.
+        string sceneName = currentScene.name;
+
+        if (sceneName == "Level 1 Short Vowels")
+        {
+            shortVWeapons = FindObjectOfType<shortVWeapon>();
+
+
+        }
+        if (sceneName == "Level 2 Double Consonants")
+        {
+           // Weapons = FindObjectOfType<Weapon>();
+
+        }
+
 
     }
 
@@ -85,17 +106,14 @@ public class PlayerController : MonoBehaviour {
                 canDoubleJump = false;
             }
         }
-       // if(invinvincibilityCounter > 0) { invinvincibilityCounter -= Time.deltaTime;  }
+
         if (knockBackCounter > 0)
         {
             knockBackCounter -= Time.deltaTime;
             if ( transform.localRotation.eulerAngles.y < 180)
-            {
-                myRigidbody.velocity = new Vector3(-knockBackForce, knockBackForce, 0f);
+            { myRigidbody.velocity = new Vector3(-knockBackForce, knockBackForce, 0f);
             } else
-            {
-                myRigidbody.velocity = new Vector3(knockBackForce, knockBackForce, 0f);
-            }
+            { myRigidbody.velocity = new Vector3(knockBackForce, knockBackForce, 0f); }
         }
         if (invinvincibilityCounter > 0) { invinvincibilityCounter -= Time.deltaTime; }
         if (invinvincibilityCounter <= 0) { theLevelManager.invicible = false; }

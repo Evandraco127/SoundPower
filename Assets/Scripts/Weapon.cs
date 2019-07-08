@@ -28,12 +28,12 @@ public class Weapon : MonoBehaviour {
 
         }
 
-        if (Input.GetKeyDown("j")) {
+        if (Input.GetKeyDown("q")) {
             Shoot();
  
         }
 
-        if (Input.GetKeyDown("s")) {
+        if (Input.GetKeyDown("w")) {
             ShootA();
         }
 

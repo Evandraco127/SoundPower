@@ -12,6 +12,8 @@ TagManager:
   - DJ
   - checkPoint
   - MovingPlatform
+  - ShortA
+  - ShortI
   layers:
   - Default
   - TransparentFX

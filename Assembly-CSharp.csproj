@@ -122,11 +122,13 @@
     <Compile Include="Assets\Scripts\enemies\slime.cs" />
     <Compile Include="Assets\Scripts\enemies\spiderController.cs" />
     <Compile Include="Assets\Scripts\HurtPlayer.cs" />
+    <Compile Include="Assets\Scripts\LevelEnd.cs" />
     <Compile Include="Assets\Scripts\LevelManager.cs" />
     <Compile Include="Assets\Scripts\movingObject.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\projectilleA.cs" />
     <Compile Include="Assets\Scripts\ResetOnReSpwan.cs" />
+    <Compile Include="Assets\Scripts\shortVWeapon.cs" />
     <Compile Include="Assets\Scripts\Weapon.cs" />
     <None Include="Assets\Cinemachine\ReleaseNotes.txt" />
     <Reference Include="UnityEditor.StandardEvents">
