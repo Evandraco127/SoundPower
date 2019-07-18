@@ -29,10 +29,9 @@ public class LevelManager : MonoBehaviour {
     public bool invicible; 
 
 
-    void Start () { thePlayer = FindObjectOfType<PlayerController>();
-
+    void Start () { 
+        thePlayer = FindObjectOfType<PlayerController>();
         objectsToReset = FindObjectsOfType<ResetOnReSpwan>();
-
           }
 	
 	void Update () {
@@ -49,23 +48,19 @@ public class LevelManager : MonoBehaviour {
 
      //  Debug.Log("running co");
 
-       thePlayer.gameObject.SetActive(false);
-
+        thePlayer.gameObject.SetActive(false);
         Instantiate(releaseOfSpirit, thePlayer.transform.position, thePlayer.transform.rotation);
 
 
          yield return new WaitForSeconds(waitToRespawn);
 
-        thePlayer.knockBackForce = 0;
+            thePlayer.knockBackForce = 0;
             healthCount = maxHealth;
             respawning = false;
-             UpdateHeartMeter();
+            UpdateHeartMeter();
             coinCount = 0;
             coinText.text = "Coins: " + coinCount;
 
-
-
-       
         thePlayer.transform.position = thePlayer.respawnPosition;
         thePlayer.gameObject.SetActive(true);
 
