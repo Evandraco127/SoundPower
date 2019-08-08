@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class projectilleA : MonoBehaviour {
-    public float speed = 20f;
+    public float speed = 15f;
     public Rigidbody2D rb;
     Renderer render; 
 
@@ -22,7 +22,7 @@ public class projectilleA : MonoBehaviour {
             if (render.isVisible)
         {
             Debug.Log("Object is visible");
-            Destroy(gameObject,0.1f);
+            Destroy(gameObject,0.3f);
         }
         else if (!render.isVisible)
         {

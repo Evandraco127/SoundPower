@@ -8,6 +8,7 @@ public class shortVWeapon : MonoBehaviour {
     public Transform firePoint; 
     public GameObject ShortaPrefab;
     public GameObject ShortIPrefab;
+    public GameObject AHlongSPPrefab;
 
     public GameObject[] powerSymbols;
 
@@ -37,6 +38,11 @@ public class shortVWeapon : MonoBehaviour {
             ShootA();
         }
 
+        if (Input.GetKeyDown("e"))
+        {
+            ShootB();
+        }
+
     }
     void Shoot()
     {
@@ -46,6 +52,11 @@ public class shortVWeapon : MonoBehaviour {
     void ShootA()
     {
         Instantiate(ShortIPrefab, firePoint.position, firePoint.rotation);
+    }
+
+    void ShootB()
+    {
+        Instantiate(AHlongSPPrefab, firePoint.position, firePoint.rotation);
     }
 
 

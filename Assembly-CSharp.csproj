@@ -117,6 +117,7 @@
     <Compile Include="Assets\Scripts\checkPointController.cs" />
     <Compile Include="Assets\Scripts\Coin.cs" />
     <Compile Include="Assets\Scripts\destroyOverTime.cs" />
+    <Compile Include="Assets\Scripts\doubleConsonants.cs" />
     <Compile Include="Assets\Scripts\enemies\BLKBear.cs" />
     <Compile Include="Assets\Scripts\enemies\sheepWController.cs" />
     <Compile Include="Assets\Scripts\enemies\slime.cs" />
@@ -124,12 +125,19 @@
     <Compile Include="Assets\Scripts\HurtPlayer.cs" />
     <Compile Include="Assets\Scripts\LevelEnd.cs" />
     <Compile Include="Assets\Scripts\LevelManager.cs" />
+    <Compile Include="Assets\Scripts\longVowels.cs" />
     <Compile Include="Assets\Scripts\movingObject.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\projectilleA.cs" />
     <Compile Include="Assets\Scripts\ResetOnReSpwan.cs" />
     <Compile Include="Assets\Scripts\shortVWeapon.cs" />
     <Compile Include="Assets\Scripts\Weapon.cs" />
+    <Compile Include="Assets\WM2000\Display\Display.cs" />
+    <Compile Include="Assets\WM2000\Keyboard\Keyboard.cs" />
+    <Compile Include="Assets\WM2000\Terminal\DisplayBuffer.cs" />
+    <Compile Include="Assets\WM2000\Terminal\InputBuffer.cs" />
+    <Compile Include="Assets\WM2000\Terminal\Terminal.cs" />
+    <Compile Include="Assets\WM2000\Utility.cs" />
     <None Include="Assets\Cinemachine\ReleaseNotes.txt" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>/Users/evan/Downloads/Keenji Sound Power/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>

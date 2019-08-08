@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour {
 
     public LevelManager theLevelManager;
    // public Weapon Weapons;
-    public shortVWeapon shortVWeapons;
+    public doubleConsonants doubleConsonants;
 
     public float knockBackForce;
     public float knockBackLength;
@@ -48,9 +48,9 @@ public class PlayerController : MonoBehaviour {
         // Retrieve the name of this scene.
         string sceneName = currentScene.name;
 
-        if (sceneName == "Level 1 Short Vowels")
+        if (sceneName == "Level 1 Double Vowels")
         {
-            shortVWeapons = FindObjectOfType<shortVWeapon>();
+            doubleConsonants = FindObjectOfType<doubleConsonants>();
 
 
         }
@@ -59,31 +59,25 @@ public class PlayerController : MonoBehaviour {
            // Weapons = FindObjectOfType<Weapon>();
 
         }
-
-
     }
 
     // Update is called once per frame
     void Update() {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
+
         if (knockBackCounter <= 0)
         {
-
             if (Input.GetAxisRaw("Horizontal") > 0f)
             {
-
                 myRigidbody.velocity = new Vector3(moveSpeed, myRigidbody.velocity.y, 0f);
                 //transform.localScale = new Vector3(1f,1f,1f);
                 transform.localRotation = Quaternion.Euler(0, 0, 0);
-
             }
             else if (Input.GetAxisRaw("Horizontal") < 0f)
             {
-
                 myRigidbody.velocity = new Vector3(-moveSpeed, myRigidbody.velocity.y, 0f);
                 // transform.localScale = new Vector3(-1f, 1f, 1f);
                 transform.localRotation = Quaternion.Euler(0, 180, 0);
-
             }
             else
             {
@@ -92,16 +86,13 @@ public class PlayerController : MonoBehaviour {
             }
             if (Input.GetButtonDown("Jump") && isGrounded)
             {
-
                 myRigidbody.velocity = new Vector3(myRigidbody.velocity.x, jumpSpeed, 0f);
 
                 canDoubleJump = true;
 
-
             }
             else if (Input.GetButtonDown("Jump") && canDoubleJump)
             {
-
                 myRigidbody.velocity = new Vector3(myRigidbody.velocity.x, jumpSpeed, 0f);
                 canDoubleJump = false;
             }
@@ -128,9 +119,6 @@ public class PlayerController : MonoBehaviour {
         knockBackCounter = knockBackLength;
         invinvincibilityCounter = invincibilityLength;
         theLevelManager.invicible = true;
-
-
-    
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
